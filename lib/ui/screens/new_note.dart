@@ -16,7 +16,7 @@ class _NewNoteState extends State<NewNote> {
 
   final Map<String, Color> _colorOptions = MyColors.colorOptions;
 
-  Color? _noteColor = null;
+  Color? _noteColor;
   String _selectedColorName = "";
 
   void _showColorPickerSheet() {
@@ -114,8 +114,6 @@ class _NewNoteState extends State<NewNote> {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-
     return Scaffold(
       backgroundColor: _noteColor,
       appBar: AppBar(
@@ -150,7 +148,6 @@ class _NewNoteState extends State<NewNote> {
           ),
         ],
       ),
-
       body: Container(
         color: _noteColor,
         child: SingleChildScrollView(
@@ -163,13 +160,13 @@ class _NewNoteState extends State<NewNote> {
                 decoration: InputDecoration(
                   hintText: 'Title',
                   hintStyle: TextStyle(
-                    color: isDark ? Colors.grey.shade500 : Colors.grey.shade700,
+                    color: Colors.grey.shade500,
                     fontWeight: FontWeight.w500,
                   ),
                   border: InputBorder.none,
                 ),
                 style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                  color: isDark ? Colors.grey.shade200 : Colors.black,
+                  color: Colors.grey.shade200,
                 ),
               ),
               const SizedBox(height: 20),
@@ -178,16 +175,14 @@ class _NewNoteState extends State<NewNote> {
                 decoration: InputDecoration(
                   hintText: 'Write your note...',
                   hintStyle: TextStyle(
-                    color: isDark ? Colors.grey.shade500 : Colors.grey.shade700,
+                    color: Colors.grey.shade500,
                     fontWeight: FontWeight.w400,
                   ),
                   border: InputBorder.none,
                 ),
                 keyboardType: TextInputType.multiline,
                 maxLines: null,
-                style: TextStyle(
-                  color: isDark ? Colors.grey.shade100 : Colors.black87,
-                ),
+                style: TextStyle(color: Colors.grey.shade100),
               ),
             ],
           ),
