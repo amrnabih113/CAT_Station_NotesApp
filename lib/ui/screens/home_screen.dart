@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:note_app_test/models/notes_model.dart';
 import 'package:note_app_test/repo/notes_repo.dart';
 import 'package:note_app_test/ui/screens/new_note.dart';
+import 'package:note_app_test/ui/screens/search_screen.dart';
 import 'package:note_app_test/ui/widgets/icon_container.dart';
 import 'package:note_app_test/ui/widgets/notes_container.dart';
 
@@ -17,7 +18,13 @@ class HomeScreen extends StatelessWidget {
           Row(
             spacing: 10,
             children: [
-              IconContainer(icon: Icons.search),
+              GestureDetector(
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SearchScreen()),
+                ),
+                child: IconContainer(icon: Icons.search),
+              ),
               IconContainer(icon: Icons.info_outline),
             ],
           ),
